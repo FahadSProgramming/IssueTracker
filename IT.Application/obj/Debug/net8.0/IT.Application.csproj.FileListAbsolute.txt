@@ -1,0 +1,17 @@
+D:\Projects\IssueTracker\IT.Application\bin\Debug\net8.0\IT.Application.deps.json
+D:\Projects\IssueTracker\IT.Application\bin\Debug\net8.0\IT.Application.dll
+D:\Projects\IssueTracker\IT.Application\bin\Debug\net8.0\IT.Application.pdb
+D:\Projects\IssueTracker\IT.Application\bin\Debug\net8.0\IT.Domain.dll
+D:\Projects\IssueTracker\IT.Application\bin\Debug\net8.0\IT.Persistence.dll
+D:\Projects\IssueTracker\IT.Application\bin\Debug\net8.0\IT.Persistence.pdb
+D:\Projects\IssueTracker\IT.Application\bin\Debug\net8.0\IT.Domain.pdb
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.csproj.AssemblyReference.cache
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.AssemblyInfoInputs.cache
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.AssemblyInfo.cs
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.csproj.CoreCompileInputs.cache
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.csproj.CopyComplete
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.dll
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\refint\IT.Application.dll
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\IT.Application.pdb
+D:\Projects\IssueTracker\IT.Application\obj\Debug\net8.0\ref\IT.Application.dll

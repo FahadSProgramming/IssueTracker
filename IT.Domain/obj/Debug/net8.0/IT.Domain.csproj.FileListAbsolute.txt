@@ -1,0 +1,11 @@
+D:\Projects\IssueTracker\IT.Domain\bin\Debug\net8.0\IT.Domain.deps.json
+D:\Projects\IssueTracker\IT.Domain\bin\Debug\net8.0\IT.Domain.dll
+D:\Projects\IssueTracker\IT.Domain\bin\Debug\net8.0\IT.Domain.pdb
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\IT.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\IT.Domain.AssemblyInfoInputs.cache
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\IT.Domain.AssemblyInfo.cs
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\IT.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\IT.Domain.dll
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\refint\IT.Domain.dll
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\IT.Domain.pdb
+D:\Projects\IssueTracker\IT.Domain\obj\Debug\net8.0\ref\IT.Domain.dll
