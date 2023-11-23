@@ -50,11 +50,13 @@ app.MapControllers();
 using(var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
     try {
+        CancellationTokenSource source = new CancellationTokenSource();
+        CancellationToken cancellationToken = source.Token;
         var context = services.GetRequiredService<DataContext>();
         var userContext = services.GetRequiredService<UserManager<IT.Domain.SystemUser>>();
         var roleContext = services.GetRequiredService<RoleManager<IdentityRole>>();
         await context.Database.MigrateAsync();
-        await IT.Persistence.Data.CountrySeeds.Seed(context);
+        await IT.Persistence.Data.CountrySeeds.Seed(context, cancellationToken);
         await IT.Persistence.Data.IdentitySeeds.SystemUserRoleSeeds(roleContext);
         await IT.Persistence.Data.IdentitySeeds.SystemUserSeeds(userContext);
         // seed data

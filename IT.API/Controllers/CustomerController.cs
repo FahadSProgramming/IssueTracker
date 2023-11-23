@@ -31,5 +31,10 @@ namespace IT.API.Controllers {
                 Id = id
             }));
         }
+
+        [HttpPost("Update")]
+        public async Task<IActionResult> UpdateCustomer(UpdateCustomerRequest request) {
+            return Ok(await _mediator.Send(request));
+        }
     }
 }

@@ -13,6 +13,27 @@ namespace IT.Persistence {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
         }
 
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken) {
+            EntityAuditing(ChangeTracker);
+            return base.SaveChangesAsync(cancellationToken);
+        }
+        private void EntityAuditing(Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker changeTracker) {
+            // Add creation stamp
+            changeTracker.Entries()
+                         .Where(x => x.State == EntityState.Added)
+                         .ToList()
+                         .ForEach(entity => {
+                             entity.Property("CreatedOn").CurrentValue = DateTime.UtcNow;
+                             entity.Property("ModifiedOn").CurrentValue = DateTime.UtcNow;
+                         });
+            changeTracker.Entries()
+                         .Where(x => x.State == EntityState.Modified)
+                         .ToList()
+                         .ForEach(entity => {
+                             entity.Property("ModifiedOn").CurrentValue = DateTime.UtcNow;
+                         });
+        }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Application> Applications { get; set; }

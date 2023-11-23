@@ -30,6 +30,7 @@ namespace IT.Application.Customer.Commands {
             RuleFor(p => p.WebAddress).MaximumLength(250);
             RuleFor(p => p.AddressLine1).MaximumLength(250);
             RuleFor(p => p.AddressLine2).MaximumLength(250);
+            RuleFor(p => p.AddressLine3).MaximumLength(250);
             RuleFor(p => p.CountryId).NotEqual(Guid.Empty).NotNull().NotEmpty();
         }
     }

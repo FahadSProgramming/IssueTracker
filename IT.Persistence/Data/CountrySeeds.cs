@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT.Persistence.Data {
     public static class CountrySeeds {
-        public static async Task Seed(DataContext context) {
+        public static async Task Seed(DataContext context, CancellationToken cancellationToken) {
             if(await context.Countries.AnyAsync()) {
                 return;
             }
@@ -92,7 +92,7 @@ namespace IT.Persistence.Data {
                 }
             };
             await context.Countries.AddRangeAsync(countries);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
         }
     }
 }
