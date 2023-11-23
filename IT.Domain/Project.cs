@@ -1,4 +1,7 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace IT.Domain {
+    [Table("Projects")]
     public class Project : Entity {
         public string Name { get; set; }
         public string Code { get; set; }

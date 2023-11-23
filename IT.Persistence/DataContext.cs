@@ -1,13 +1,15 @@
 using IT.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace IT.Persistence {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<SystemUser>
     {
         public DataContext(DbContextOptions options) : base(options) {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
         }
 
@@ -18,5 +20,6 @@ namespace IT.Persistence {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Incident> Incidents { get; set; }
+        public DbSet<SystemUser> SystemUsers { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace IT.Persistence.Configurations
             builder.Property(p => p.EmailAddress).HasMaxLength(150);
             builder.Property(p => p.SecondaryEmailAddress).HasMaxLength(150);
             builder.HasOne(p => p.Customer).WithMany(p => p.Contacts).HasForeignKey(p => p.CustomerId).OnDelete(DeleteBehavior.Restrict).IsRequired();
+            builder.HasOne(p => p.SystemUser).WithOne(p => p.Contact).OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

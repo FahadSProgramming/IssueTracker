@@ -483,3 +483,5 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+IT.API/IssueTracker.db
+IT.API/IssueTracker.db

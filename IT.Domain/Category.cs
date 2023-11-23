@@ -1,4 +1,7 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace IT.Domain {
+    [Table("Categories")]
     public class Category : Entity {
         public string Name { get; set; }
         public string Code { get; set; }

@@ -1,6 +1,4 @@
 using IT.Application.Exceptions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Builder;
 using System.Net;
 
 namespace IT.API.Middleware {
@@ -29,6 +27,10 @@ namespace IT.API.Middleware {
                 case ValidationException validationException: {
                     code = HttpStatusCode.BadRequest;
                     result = System.Text.Json.JsonSerializer.Serialize(validationException.Failures);
+                    break;
+                }
+                case NotFoundException notFoundException: {
+                    code = HttpStatusCode.NotFound;
                     break;
                 }
             }
