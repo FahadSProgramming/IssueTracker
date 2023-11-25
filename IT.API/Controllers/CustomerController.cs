@@ -10,10 +10,12 @@ namespace IT.API.Controllers {
     [Route("api/[controller]")]
     [Authorize(Roles = $"{SystemUserRoles.Role_SysAdmin},{SystemUserRoles.Role_SysUser_Manager},{SystemUserRoles.Role_SysUser}")]
     public class CustomerController : ControllerBase {
+        
         private readonly IMediator _mediator;
         public CustomerController(IMediator mediator) {
             _mediator = mediator;
         }
+
         [HttpPost("Create")]
         [Authorize(Roles = SystemUserRoles.Role_SysAdmin)]
         public async Task<IActionResult> CreateCustomer(CreateCustomerRequest request) {
@@ -32,9 +34,19 @@ namespace IT.API.Controllers {
             }));
         }
 
-        [HttpPost("Update")]
+        [HttpPut("Update")]
         public async Task<IActionResult> UpdateCustomer(UpdateCustomerRequest request) {
             return Ok(await _mediator.Send(request));
+        }
+
+        [HttpPatch("ActivateAccount/{id}")]
+        [Authorize(Roles = SystemUserRoles.Role_SysAdmin)]
+        public async Task<IActionResult> ActivateAccount(Guid id, bool activate = true) {
+            await _mediator.Send(new ActivateCustomerRequest {
+                Id = id,
+                Activate = activate
+            });
+            return Ok();
         }
     }
 }

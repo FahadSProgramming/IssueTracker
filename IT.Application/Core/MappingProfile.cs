@@ -3,7 +3,7 @@ using AutoMapper;
 namespace IT.Application.Core {
     public class MappingProfile : Profile {
         public MappingProfile() {
-        
+
         #region Customer Profiles
             CreateMap<Customer.Queries.CustomerDto, Domain.Customer>()
             .ForMember(p => p.Rating, x => x.MapFrom(x => x.Rating.GetHashCode()))
@@ -14,6 +14,12 @@ namespace IT.Application.Core {
             CreateMap<Customer.Commands.UpdateCustomerRequest, Domain.Customer>()
             .ForMember(p => p.Rating, x => x.MapFrom(x => x.Rating.GetHashCode()))
             .ReverseMap();
+        #endregion
+
+        #region Contact Profiles
+            CreateMap<Contact.Commands.CreateContactRequest, Domain.Contact>().ReverseMap();
+            CreateMap<Contact.Commands.UpdateContactRequest, Domain.Contact>().ReverseMap();
+            CreateMap<Contact.Queries.ContactDto, Domain.Contact>().ReverseMap();
         #endregion
         
         #region Category Profiles
