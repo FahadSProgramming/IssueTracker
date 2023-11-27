@@ -3,6 +3,7 @@ using System;
 using IT.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IT.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231127214552_UserRequestsTable")]
+    partial class UserRequestsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -241,7 +244,7 @@ namespace IT.Persistence.Migrations
                     b.Property<DateTime>("SigningDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2023, 11, 27, 21, 58, 38, 624, DateTimeKind.Utc).AddTicks(3833));
+                        .HasDefaultValue(new DateTime(2023, 11, 27, 21, 45, 50, 842, DateTimeKind.Utc).AddTicks(6608));
 
                     b.Property<string>("WebAddress")
                         .HasMaxLength(250)
@@ -290,7 +293,7 @@ namespace IT.Persistence.Migrations
                     b.Property<DateTime>("ReportedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2023, 11, 27, 21, 58, 38, 624, DateTimeKind.Utc).AddTicks(7024));
+                        .HasDefaultValue(new DateTime(2023, 11, 27, 21, 45, 50, 843, DateTimeKind.Utc).AddTicks(282));
 
                     b.Property<DateTime?>("ResolvedOn")
                         .HasColumnType("TEXT");
@@ -363,7 +366,7 @@ namespace IT.Persistence.Migrations
                     b.Property<DateTime>("StartedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValue(new DateTime(2023, 11, 27, 21, 58, 38, 625, DateTimeKind.Utc).AddTicks(4285));
+                        .HasDefaultValue(new DateTime(2023, 11, 27, 21, 45, 50, 843, DateTimeKind.Utc).AddTicks(8892));
 
                     b.HasKey("Id");
 
@@ -489,9 +492,6 @@ namespace IT.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsManager")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("ModifiedOn")

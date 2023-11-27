@@ -31,7 +31,7 @@ namespace IT.Application.Contact.Commands {
             RuleFor(p => p.Designation).MaximumLength(100);
             RuleFor(p => p.PrimaryPhone).MaximumLength(20);
             RuleFor(p => p.SecondaryPhone).MaximumLength(20);
-            RuleFor(p => p.EmailAddress).MaximumLength(150);
+            RuleFor(p => p.EmailAddress).MaximumLength(150).NotNull().NotEmpty();
             RuleFor(p => p.SecondaryEmailAddress).MaximumLength(150);
             RuleFor(p => p.CustomerId).NotEmpty().NotNull().NotEqual(Guid.Empty);
             RuleFor(p => p.SystemUserId).NotEmpty().NotNull().NotEqual(Guid.Empty);

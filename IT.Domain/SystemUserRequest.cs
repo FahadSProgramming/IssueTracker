@@ -6,6 +6,7 @@ namespace IT.Domain {
         public string PhoneNumber { get; set; }
         public string Description { get; set; }
         public int Status { get; set; }
+        public bool IsManager { get; set; }
         public Guid RequestorId { get; set; }
         public Contact Requestor { get; set; }
         public Guid CustomerId { get; set; }

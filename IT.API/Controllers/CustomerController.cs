@@ -8,7 +8,7 @@ using IT.Application.Customer.Queries;
 namespace IT.API.Controllers {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = $"{SystemUserRoles.Role_SysAdmin},{SystemUserRoles.Role_SysUser_Manager},{SystemUserRoles.Role_SysUser}")]
+    [Authorize(Roles = $"{SystemUserRoles.Role_SysAdmin},{SystemUserRoles.Role_SysUser_Manager},{SystemUserRoles.Role_SysUser},{SystemUserRoles.Role_Client_Manager}")]
     public class CustomerController : ControllerBase {
         
         private readonly IMediator _mediator;
@@ -23,6 +23,7 @@ namespace IT.API.Controllers {
         }
 
         [HttpGet("GetAll")]
+        [Authorize(Roles = $"{SystemUserRoles.Role_SysAdmin},{SystemUserRoles.Role_SysUser_Manager}")]
         public async Task<IActionResult> GetAllCustomers(GetAllCustomers request) {
             return Ok(await _mediator.Send(request));
         }

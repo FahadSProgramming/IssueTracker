@@ -42,5 +42,6 @@ namespace IT.Persistence {
         public DbSet<Country> Countries { get; set; }
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<SystemUser> SystemUsers { get; set; }
+        public DbSet<SystemUserRequest> SystemUserRequests { get; set; }
     }
 }

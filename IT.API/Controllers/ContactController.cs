@@ -38,5 +38,15 @@ namespace IT.API.Controllers {
                 Id = id
             }));
         }
+
+        [HttpPatch("Activate/{id}/{activate}")]
+        [Authorize(Roles = $"{SystemUserRoles.Role_SysAdmin},{SystemUserRoles.Role_SysUser_Manager}")]
+        public async Task<IActionResult> ActivateContact(Guid id, bool activate) {
+            await _mediator.Send(new ActivateContactRequest {
+                ContactId = id,
+                Activate = activate
+            });
+            return Ok();
+        }
     }
 }
