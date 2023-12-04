@@ -13,9 +13,6 @@ namespace IT.Domain {
         public string SecondaryEmailAddress { get; set; }
         public Guid CustomerId { get; set; }
         public Customer Customer { get; set; }
-        public Guid? SystemUserId { get; set; }
-        public SystemUser SystemUser { get; set; }
-        public ICollection<SystemUserRequest> UserRequests { get; set; }
         public ICollection<Project> Projects { get; set; }
         public ICollection<Application> Applications { get; set; }
         public ICollection<Incident> ReportedIncidents { get; set; }

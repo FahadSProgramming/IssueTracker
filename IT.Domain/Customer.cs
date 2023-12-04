@@ -14,7 +14,7 @@ namespace IT.Domain {
         public DateTime SigningDate { get; set; }
         public Guid CountryId { get; set; }
         public Country Country { get; set; }
-        public ICollection<SystemUserRequest> UserRequests { get; set; }
+        // public ICollection<SystemUserRequest> UserRequests { get; set; }
         public ICollection<Application> Applications { get; set; }
         public ICollection<Contact> Contacts { get; set; }
         public ICollection<Incident> ReportedIncidents { get; set; }

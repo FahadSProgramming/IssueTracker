@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IT.API.Controllers.Admin {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles =  IT.Persistence.Data.SystemUserRoles.Role_SysAdmin)]
+    [AllowAnonymous]
     public class AuthController : ControllerBase {
 
         private readonly IMediator _mediator;
@@ -19,7 +19,8 @@ namespace IT.API.Controllers.Admin {
             var result = await _mediator.Send(request);
             return Ok(result);
         }
-
+        
+        [Authorize(Roles =  IT.Persistence.Data.SystemUserRoles.Role_SysAdmin)]
         [HttpPost("Register")]
         public async Task<IActionResult> Register(RegistrationRequest request) {
             var result = await _mediator.Send(request);

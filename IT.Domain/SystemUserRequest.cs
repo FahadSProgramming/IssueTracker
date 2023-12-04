@@ -13,5 +13,7 @@ namespace IT.Domain {
         public Customer Customer { get; set; }
         public Guid? SystemUserId { get; set; }
         public SystemUser SystemUser { get; set; }
+        public Guid? AssignedToId { get; set; }
+        public SystemUser AssignedTo { get; set; }
     }
 }

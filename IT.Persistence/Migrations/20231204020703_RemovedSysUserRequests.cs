@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace IT.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Identity : Migration
+    public partial class RemovedSysUserRequests : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,8 +30,6 @@ namespace IT.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    DisplayName = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -212,7 +210,7 @@ namespace IT.Persistence.Migrations
                     AddressLine3 = table.Column<string>(type: "TEXT", nullable: true),
                     PostalCode = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
                     Rating = table.Column<int>(type: "INTEGER", nullable: false),
-                    SigningDate = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2023, 11, 21, 17, 24, 42, 498, DateTimeKind.Utc).AddTicks(1672)),
+                    SigningDate = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2023, 12, 4, 2, 7, 2, 975, DateTimeKind.Utc).AddTicks(274)),
                     CountryId = table.Column<Guid>(type: "TEXT", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -289,13 +287,41 @@ namespace IT.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SystemUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    DisplayName = table.Column<string>(type: "TEXT", maxLength: 300, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    ContactId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ModifiedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Enabled = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SystemUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SystemUsers_AspNetUsers_Id",
+                        column: x => x.Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SystemUsers_Contacts_ContactId",
+                        column: x => x.ContactId,
+                        principalTable: "Contacts",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 250, nullable: false),
                     Code = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
-                    StartedOn = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2023, 11, 21, 17, 24, 42, 499, DateTimeKind.Utc).AddTicks(1390)),
+                    StartedOn = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2023, 12, 4, 2, 7, 2, 976, DateTimeKind.Utc).AddTicks(581)),
                     CompletedOn = table.Column<DateTime>(type: "TEXT", nullable: true),
                     OwnerId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ApplicationId = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -327,7 +353,7 @@ namespace IT.Persistence.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Title = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    ReportedOn = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2023, 11, 21, 17, 24, 42, 498, DateTimeKind.Utc).AddTicks(4775)),
+                    ReportedOn = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValue: new DateTime(2023, 12, 4, 2, 7, 2, 975, DateTimeKind.Utc).AddTicks(3438)),
                     TargetResolutionDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ResolvedOn = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Status = table.Column<int>(type: "INTEGER", nullable: false, defaultValue: 1000),
@@ -472,6 +498,11 @@ namespace IT.Persistence.Migrations
                 name: "IX_Projects_OwnerId",
                 table: "Projects",
                 column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SystemUsers_ContactId",
+                table: "SystemUsers",
+                column: "ContactId");
         }
 
         /// <inheritdoc />
@@ -496,16 +527,19 @@ namespace IT.Persistence.Migrations
                 name: "Incidents");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "SystemUsers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Projects");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Applications");

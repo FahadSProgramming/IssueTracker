@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using IT.Domain;
+using IT.Persistence.Configurations;
 using Microsoft.AspNetCore.Identity;
 
 namespace IT.Persistence.Data {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace IT.Persistence {
-    public class DataContext : IdentityDbContext<SystemUser>
+    public class DataContext : IdentityDbContext
     {
         public DataContext(DbContextOptions options) : base(options) {
         }
@@ -20,7 +20,10 @@ namespace IT.Persistence {
         private void EntityAuditing(Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker changeTracker) {
             // Add creation stamp
             changeTracker.Entries()
-                         .Where(x => x.State == EntityState.Added)
+                         .Where(x => x.State == EntityState.Added && (
+                            x.GetType() == typeof(Entity)
+                            || x.GetType() == typeof(SystemUser)
+                         ))
                          .ToList()
                          .ForEach(entity => {
                              entity.Property("CreatedOn").CurrentValue = DateTime.UtcNow;
@@ -42,6 +45,6 @@ namespace IT.Persistence {
         public DbSet<Country> Countries { get; set; }
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<SystemUser> SystemUsers { get; set; }
-        public DbSet<SystemUserRequest> SystemUserRequests { get; set; }
+        // public DbSet<SystemUserRequest> SystemUserRequests { get; set; }
     }
 }
